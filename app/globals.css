@@ -1,0 +1,272 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  /* Updated color tokens to match Islamic design brief */
+  --background: #ffffff; /* Pure white */
+  --foreground: #374151; /* Dark gray */
+  --card: #f0fdf4; /* Light green */
+  --card-foreground: #374151; /* Dark gray */
+  --popover: #ffffff; /* White for popovers */
+  --popover-foreground: #374151; /* Dark gray for popover text */
+  --primary: #15803d; /* Green-700 for buttons */
+  --primary-foreground: #ffffff; /* White text on primary */
+  --secondary: #84cc16; /* Bright green for accents */
+  --secondary-foreground: #374151; /* Dark gray for secondary text */
+  --muted: #f0fdf4; /* Light background for muted text */
+  --muted-foreground: #374151; /* Dark gray for muted text */
+  --accent: #84cc16; /* Bright green for interactive elements */
+  --accent-foreground: #ffffff; /* White for accent text */
+  --destructive: #dc2626; /* Red-600 for error states */
+  --destructive-foreground: #ffffff; /* White for destructive text */
+  --border: #e5e7eb; /* Light gray for borders */
+  --input: #f9fafb; /* Light gray for input fields */
+  --ring: #84cc16; /* Bright green for focus rings */
+  --chart-1: #15803d; /* Green-700 for charts */
+  --chart-2: #dc2626; /* Red-600 for charts */
+  --chart-3: #d97706; /* Amber-600 for charts */
+  --chart-4: #84cc16; /* Bright green for charts */
+  --chart-5: #f59e0b; /* Yellow for charts */
+  --radius: 0.5rem; /* Rounded corners for cards and buttons */
+  --sidebar: #f0fdf4; /* Light green for sidebar */
+  --sidebar-foreground: #374151; /* Dark gray for sidebar text */
+  --sidebar-primary: #15803d; /* Green-700 for sidebar accents */
+  --sidebar-primary-foreground: #ffffff; /* White for sidebar text */
+  --sidebar-accent: #84cc16; /* Bright green for sidebar accents */
+  --sidebar-accent-foreground: #374151; /* Dark gray for sidebar accent text */
+  --sidebar-border: #e5e7eb; /* Light gray for sidebar borders */
+  --sidebar-ring: #84cc16; /* Bright green for sidebar focus rings */
+}
+
+.dark {
+  --background: #0f172a;
+  --foreground: #f1f5f9;
+  --card: #1e293b;
+  --card-foreground: #f1f5f9;
+  --popover: #1e293b;
+  --popover-foreground: #f1f5f9;
+  --primary: #22c55e;
+  --primary-foreground: #0f172a;
+  --secondary: #84cc16;
+  --secondary-foreground: #0f172a;
+  --muted: #1e293b;
+  --muted-foreground: #94a3b8;
+  --accent: #84cc16;
+  --accent-foreground: #0f172a;
+  --destructive: #dc2626;
+  --destructive-foreground: #ffffff;
+  --border: #334155;
+  --input: #1e293b;
+  --ring: #84cc16;
+  --chart-1: #22c55e;
+  --chart-2: #dc2626;
+  --chart-3: #d97706;
+  --chart-4: #84cc16;
+  --chart-5: #f59e0b;
+  --sidebar: #1e293b;
+  --sidebar-foreground: #f1f5f9;
+  --sidebar-primary: #22c55e;
+  --sidebar-primary-foreground: #0f172a;
+  --sidebar-accent: #334155;
+  --sidebar-accent-foreground: #f1f5f9;
+  --sidebar-border: #334155;
+  --sidebar-ring: #84cc16;
+}
+
+@theme inline {
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+
+  /* Enhanced RTL support and Arabic typography */
+  [dir="rtl"] {
+    direction: rtl;
+  }
+
+  /* Enhanced Arabic typography with better font stack and improved rendering */
+  .arabic-text {
+    font-family: "Amiri", "Scheherazade New", "Noto Sans Arabic", "Times New Roman", serif;
+    line-height: 2.5;
+    font-size: 2rem;
+    text-align: right;
+    direction: rtl;
+    font-weight: 400;
+    letter-spacing: 0.02em;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  .arabic-word {
+    font-family: "Amiri", "Scheherazade New", "Noto Sans Arabic", "Times New Roman", serif;
+    font-size: 1.75rem;
+    line-height: 2.2;
+    direction: rtl;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    padding: 4px 6px;
+    border-radius: 6px;
+    display: inline-block;
+    margin: 0 3px;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    position: relative;
+  }
+
+  .arabic-word:hover {
+    background-color: hsl(var(--accent) / 0.2);
+    color: var(--accent-foreground);
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  .arabic-word.playing {
+    background-color: hsl(var(--primary) / 0.9);
+    color: var(--primary-foreground);
+    animation: pulse 1.5s infinite;
+    box-shadow: 0 0 0 2px hsl(var(--primary) / 0.3);
+  }
+
+  @keyframes pulse {
+    0%,
+    100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 0.8;
+      transform: scale(1.02);
+    }
+  }
+
+  .transliteration-text {
+    font-family: var(--font-mono);
+    font-size: 0.875rem;
+    color: var(--muted-foreground);
+    font-style: italic;
+    letter-spacing: 0.025em;
+  }
+
+  /* Improved responsive design for Arabic text */
+  @media (max-width: 768px) {
+    .arabic-text {
+      font-size: 1.5rem;
+      line-height: 2.2;
+    }
+
+    .arabic-word {
+      font-size: 1.375rem;
+      line-height: 2;
+      padding: 3px 4px;
+      margin: 0 2px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .arabic-text {
+      font-size: 1.25rem;
+      line-height: 2;
+    }
+
+    .arabic-word {
+      font-size: 1.125rem;
+      line-height: 1.8;
+      padding: 2px 3px;
+      margin: 0 1px;
+    }
+  }
+
+  /* Added smooth animations for enhanced UX */
+  .verse-card {
+    transition: all 0.3s ease;
+    border: 1px solid hsl(var(--border));
+  }
+
+  .verse-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    border-color: hsl(var(--primary) / 0.2);
+  }
+
+  .metadata-badge {
+    background: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--secondary)));
+    color: var(--primary-foreground);
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  /* Added loading states and focus improvements */
+  .loading-shimmer {
+    background: linear-gradient(90deg, hsl(var(--muted)) 25%, hsl(var(--muted) / 0.5) 50%, hsl(var(--muted)) 75%);
+    background-size: 200% 100%;
+    animation: shimmer 2s infinite;
+  }
+
+  @keyframes shimmer {
+    0% {
+      background-position: -200% 0;
+    }
+    100% {
+      background-position: 200% 0;
+    }
+  }
+
+  /* Enhanced focus states for accessibility */
+  .arabic-word:focus {
+    outline: 2px solid hsl(var(--ring));
+    outline-offset: 2px;
+    background-color: hsl(var(--accent) / 0.1);
+  }
+}
